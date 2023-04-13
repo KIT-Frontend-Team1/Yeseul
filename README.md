@@ -11,6 +11,6 @@
 - DOM > dom
 
 ## :file_folder: 3주차 JavaScript / DOM / 강의 과제
-JavaScript > level 1 ~ 3 -> 1번 미완성(230414)
-DOM > DomTest -> 6번 미완성(230414)
-강의 과제 > 무한 슬라이드, 로또 추첨
+- JavaScript > level 1 ~ 3 -> 1번 미완성(230414)
+- DOM > DomTest -> 6번 미완성(230414)
+- 강의 과제 > 무한 슬라이드, 로또 추첨
