@@ -1,7 +1,7 @@
 # Yeseul
 
-#### :computer: 김예슬의 개인 과제 레퍼지토리
-
+### :computer: 김예슬의 개인 과제 레퍼지토리
+<hr>
 ## :file_folder: 1주차 JavaScript
 - 1 ~ 4번 진행 완료
 - 5번(심화) 완벽하게 구현되지 않음 → 리팩토링 필요
