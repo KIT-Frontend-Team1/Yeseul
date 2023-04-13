@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <style>
+      .content {
+        width: 1024px;
+      }
+
+      .disp {
+        height: 200px;
+        border: 1px solid black;
+      }
+
+      .tab_host {
+        display: flex;
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      .tab:hover {
+        cursor: pointer;
+      }
+
+      .tab {
+        width: 200px;
+        border: 1px solid #ededed;
+      }
+
+      .on {
+        background-color: lavender;
+        color: #7b7bff;
+      }
+
+      .none {
+        display: none;
+      }
+
+      #list {
+        border: 1px solid #ededed;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <div class="disp" id="display">
+        <form>
+          <p>1.페이지가 로딩 될 때 이곳의 글씨를 변경하시오.</p>
+        </form>
+      </div>
+
+      <p>2.탭을 선택하면 선택한 탭의 배경과 글자의색이 바뀌도록 하시오</p>
+      <div class="tab_host">
+        <div class="tab">탭1</div>
+        <div class="tab">탭2</div>
+        <div class="tab">탭3</div>
+        <div class="tab">탭4</div>
+        <div class="tab">탭5</div>
+      </div>
+
+      <p>
+        3. 위의 탭 클릭시 아래의 컨텐츠중 탭과 숫자가 같은 것만 보이게 하시오.
+      </p>
+      <div class="tab_body">
+        <div class="block">탭1 컨텐츠</div>
+        <div class="block">탭3 컨텐츠</div>
+        <div class="block">탭2 컨텐츠</div>
+        <div class="block">탭5 컨텐츠</div>
+        <div class="block">탭4 컨텐츠</div>
+      </div>
+    </div>
+  </body>
+  <script>
+    window.onload = function () {
+      const $changeText = document.querySelector("form > p");
+      $changeText.innerText = "lorem ipsum";
+
+      // 클래스 block을 페이지 로딩 시 전부 가려줌(display: none)
+      $blocks.forEach((e) => {
+        e.classList.add("none");
+      });
+    };
+
+    // querySelectorAll를 이용해 클래스를 전부 선택
+    // -> 유사 배열 객체
+    const $tabList = document.querySelectorAll(".tab");
+    const $blocks = document.querySelectorAll(".block");
+
+    // $tabList를 forEach로 순회한다.
+    $tabList.forEach((tablist) => {
+      // 각 요소(.tab)에 click 이벤트를 등록한다
+      tablist.addEventListener("click", (tab) => {
+        // $tabList를 순회하여 on class의 속성을 제거한다
+        $tabList.forEach((e) => {
+          e.classList.remove("on");
+        });
+        // console.log(tab.target.innerHTML) // div class="tab" 안의 텍스트가 필요하여 디버깅
+        // 클릭된 요소(.tab)에 on class를 추가한다(배경색, 색상 변경)
+        tab.target.classList.add("on");
+
+        // $blocks를 순회
+        $blocks.forEach((block) => {
+          // 요소의 innerHTML을 " "으로 split 하여 배열로 만들고 0번 인덱스 가져오기 -> 탭n
+          // $tabList의 innerHTML과 일치하면 클래스 none 지우기
+          if (block.innerHTML.split(" ")[0] === tab.target.innerHTML) {
+            block.classList.remove("none");
+          } else block.classList.add("none"); // $tabList의 innerHTML과 일치하지 않으면 추가하기
+        });
+      });
+    });
+  </script>
+</html>
