@@ -1,6 +1,6 @@
 # Yeseul
 
-##### 김예슬의 개인 과제 레퍼지토리
+#### :computer: 김예슬의 개인 과제 레퍼지토리
 
 ## :file_folder: 1주차 JavaScript
 - 1 ~ 4번 진행 완료
