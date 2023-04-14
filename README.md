@@ -16,5 +16,5 @@
 
 ## :file_folder: 3주차 JavaScript / DOM / 강의 과제
 
-- JavaScript > level 1 ~ 3 -> 1번 미완성(230414), 2번 에러 발생하여 코드 수정 필요
-- DOM > DomTest -> 6번 미완성(230414)
+- JavaScript > level 1 ~ 3 -> 1번 미완성(230414)
+- DOM > DomTest -> 6번 미완성(230414) : 수정 후 버튼 삭제되는 문제 해결 필요

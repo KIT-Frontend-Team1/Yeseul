@@ -69,6 +69,11 @@
       2. keyup 이벤트 발생시 숫자를 입력하면 alert 띄우고 input값 공백으로 비워주기
       */
 
+      // window.onload = () => {
+        // console.log($te_input.getAttribute('maxlength'))
+        // $te_input.setAttribute('maxlength', '10')
+      // }
+
       const $te_input = document.getElementById('te_input');
 
       $te_input.addEventListener('keyup', (e) => {
@@ -147,12 +152,8 @@
       $form.addEventListener('reset', () => {
         let $li = document.querySelectorAll('li');
         $li.forEach((v, i) => {
-          v = '';
+          v.remove();
         });
-        // 안의 내용만 지울 때
-        // $li.forEach((v, i) => {
-        //   $li[i].innerHTML = '';
-        // })
       });
     </script>
   </body>
