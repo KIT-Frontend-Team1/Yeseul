@@ -6,12 +6,11 @@ import UserStoreProvider from "./store/3_context";
 
 function App() {
   return (
-    // <ModalStoreProvider>
-    //   <RouterProvider router={router} />
-    // </ModalStoreProvider>
-    <UserStoreProvider>
-      <RouterProvider router={router} />
-    </UserStoreProvider>
+    <ModalStoreProvider>
+      <UserStoreProvider>
+        <RouterProvider router={router} />
+      </UserStoreProvider>
+    </ModalStoreProvider>
   );
 }
 

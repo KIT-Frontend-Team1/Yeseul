@@ -1,8 +1,7 @@
-// import { useState } from "react";
 import NavigateButton from "../../../../components/NavigateButton";
 import ContextQ2Form from "../atom/Q2/Form";
 import ContextQ2Form3 from "../atom/Q2/Form3";
-import UserStoreProvider, { useUserStore } from "../../../../store/3_context";
+import { useUserStore } from "../../../../store/3_context";
 
 const ContextQ2Page = () => {
   /*
