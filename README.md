@@ -4,6 +4,8 @@
 
 # 🗂️ Javascript
 
+<hr>
+
 ## :file_folder: 1주차 JavaScript
 
 - 1 ~ 4번 진행 완료
@@ -27,6 +29,8 @@
 <hr>
 
 # 🗂️ React
+
+<hr>
 
 ## :file_folder: Hooks / State
 
