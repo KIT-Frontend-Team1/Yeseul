@@ -1,8 +1,8 @@
-# Yeseul
-
 ### :computer: 김예슬의 개인 과제 레퍼지토리
 
 <hr>
+
+# 🗂️ Javascript
 
 ## :file_folder: 1주차 JavaScript
 
@@ -23,3 +23,16 @@
 
 - 보충 > dom2 개별 추가한 수정, 삭제 기능 중 코드 중복 처리와 오류 사항 있음
 - 심화 > disk play/stop 버튼 클릭시 배경화면 효과 이벤트에서 막힘, q문제 페이지네이션 진행중
+
+<hr>
+
+# 🗂️ React
+
+## :file_folder: Hooks / State
+
+- basic > q1, q2, q3
+- state > state1, 2, 3
+
+## :file_folder: globaltest / 전역 상태 관리
+
+- 1_reducer, 2_contextm 3_context
