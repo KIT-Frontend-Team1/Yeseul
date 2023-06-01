@@ -42,7 +42,17 @@ import { handlers } from "./handlers";
 export const worker = setupWorker(...handlers);
 ```
 
-### 5. worker 삽입
+### 5. service worker 코드 생성
+
+- 위 과정만 진행된다고 해서 msw 를 바로 사용할 수 있는 것이 아니다. 초기화 과정이 필요
+
+- mockServiceWorker.js가 생성됨
+
+```
+npx msw init public/ --save
+```
+
+### 6. worker 삽입
 
 - 서비스 워커를 구동하는 코드를 삽입
 
@@ -56,7 +66,7 @@ if (process.env.NODE_ENV === "development") {
 
 - npm start하여 console창에 [MSW] Mocking enabled. 가 확인하면 모킹이 활성화된 것이다 (이제 get, post 요청을 보낼 때 모킹 응답이 올 준비가 됐다)
 
-### 6. 컴포넌트 만들어 API 데이터 가져오기
+### 7. 컴포넌트 만들어 API 데이터 가져오기
 
 - API 가져오기 ➡️ https://jsonplaceholder.typicode.com/users
 
@@ -96,7 +106,7 @@ const MockingTest = () => {
 export default MockingTest;
 ```
 
-### 7. msw로 데이터 가져오기
+### 8. msw로 데이터 가져오기
 
 - handle.js 수정
 
