@@ -18,7 +18,11 @@ mkdir src/mocks
 
 - mock API 구현 시 브라우저에서 받은 request를 가로챘을 때 임의의 응답을 해주는 핸들러 작성이 필요
 
-- 일단 임의의 데이터를 넣어줌
+- rest 방식으로 핸들러를 작성할 때, rest뒤에 HTTP 메서드를 붙인다.
+  - ex) rest.post(), rest.get()
+  - 첫 번째 인자로는 URL의 경로가 들어오고, 두 번째 인자로는 첫 번째 인자의 처리 로직이 들어온다
+
+- 현재는 임의 코드를 집어넣었다
 
 ```javascript
 export const handlers = [
@@ -108,9 +112,16 @@ export default MockingTest;
 
 ### 8. msw로 데이터 가져오기
 
-- handle.js 수정
+- handlers.js 수정
 
 - GET 요청을 가로채서 ctx.json 에 작성한 값을 임의로 보여주는 과정
+
+- rest.get 으로 https://jsonplaceholder.typicode.com/users URL 요청이 들어왔을 때 ctx.json()에  작성해준(내가 의도한 응답) 배열을 json 형태로 응답한다
+
+- 여기서
+  - req : 요청에 관한 역할을 처리하는 변수
+  - res : 응답을 리턴할 때 쓰이는 함수
+  - ctx : 응답 처리에 대한 내용을 나타내는 변수
 
 ```javascript
 import { rest } from "msw";
@@ -174,4 +185,4 @@ export const handlers = [
 ];
 ```
 
--> 이렇게 함으로써 실제 API가 아닌 가짜 응답을 받아 애플리케이션을 테스트 할 수 있다.
+이렇게 msw를 사용함으로써 실제 데이터가 아닌 API를 모킹하여 애플리케이션을 테스트 할 수 있다. 이는 백엔드 API가 완성되지 않았을 때 모킹을 통하여 애플리케이션을 시뮬레이션 및 테스트 하는데 용이하고, 나중에 실제 백엔드 API의 응답으로 대체할 때 URL만 수정해주면 되므로 코드의 수정이 간단하고 용이하여 개발을 더 빠르고 효율적으로 할 수 있다는 장점이 있다.
