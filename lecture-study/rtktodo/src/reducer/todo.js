@@ -51,7 +51,12 @@ export const todoSlice = createSlice({
       // state.todos = state.todos.filter((todo) => todo.id !== id);
 
       // 한 줄로 바꾸기
-      state.todos = state.todos.filter((todo) => todo.id !== action.payload);
+      // state.todos = state.todos.filter((todo) => todo.id !== action.payload);
+
+      // splice 사용해보기
+      const index = state.todos.findIndex((todo) => todo.id === action.payload);
+
+      state.todos.splice(index, 1);
     },
   },
 });
