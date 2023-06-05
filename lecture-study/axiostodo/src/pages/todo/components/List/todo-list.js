@@ -9,7 +9,7 @@ const TodoList = ({ todoList, setTodoList }) => {
       const newTodoList = [...todoList];
       const todo = newTodoList.find((todo) => todo.id === id);
       todo.state = !state; // 현재 state 반대값
-      await axiosInstance.put(`/todo/${id}`, { id, state });
+      await axiosInstance.put(`/todo/${id}`, { id, state: !state }); // 전달시에도 !state 해주어야 바뀐 state값이 db에 저장
       setTodoList(newTodoList); // UI 업데이트
     } catch (err) {
       console.err("Error!");

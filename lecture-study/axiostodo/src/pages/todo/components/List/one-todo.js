@@ -13,12 +13,6 @@ import useInputs from "../../../../hooks/use-inputs";
  *
  */
 
-/*
-  과제
-  form 이벤트로 바꾸기(Wrapper를 form으로 수정을)
-  useInput 바꿔야함
-*/
-
 const OneTodo = ({
   todo,
   handleCheckTodo,
@@ -33,11 +27,9 @@ const OneTodo = ({
   // const [{title, content}, onChangeInput] = useInputs()
 
   const handleOnSetEditMode = () => {
-    // console.log(isEditMode);
     if (!isEditMode) return setIsEditMode(true);
     handleUpdateTodo(id, editContent);
     setIsEditMode(false);
-    // prev로도 할 수 있음 ~
   };
 
   return (
