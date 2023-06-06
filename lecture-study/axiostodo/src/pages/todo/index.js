@@ -8,92 +8,11 @@ import TodoList from "./components/List/todo-list";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import usePrevModal from "../../hooks/use-prevmodal";
-import { axiosInstance } from "utils/axios";
+import useAdd from "hooks/crud/use-add";
 
 const TodoPage = () => {
-  const params = useParams();
-  // const [isAddTodoMadal, setIsAddTodoModal] = useState(false);
-
-  // 커스텀 훅으로 할 수 있을 거 같지 않나요??????
-  // usePrevModal 만들어서 할 수 있다(공용 컴포넌트로 >)
-  // const handleAddTodoMadal = () => {
-  //   setIsAddTodoModal(true);
-  //   // setIsAddTodoModal((prev) => !prev)
-  // };
-
-  // const handleCloseTodoMadal = () => {
-  //   setIsAddTodoModal(false);
-  // };
-
   const [isAddTodoMadal, setIsAddTodoModal, handleAdd] = usePrevModal(false);
-  const [todoList, setTodoList] = useState([]);
-
-  /*
-  - 낙관적 업데이트(반드시 그 결과와 일치한다는 가정 하에, 성공했다는 가정 하에)
-  사용자 경험이 데이터보다 우선시 되어야할 때
-  장점 - 사용자가 빠르게 볼 수 있음 (마이페이지, 좋아요, 채팅)
-  위험함 - 엣지 케이스 등
-  */
-
-  const getTodoList = async () => {
-    try {
-      const res = await axiosInstance.get("/todo");
-      console.log(res);
-      setTodoList(res.data.data);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  useEffect(() => {
-    getTodoList();
-  }, []);
-
-  // 낙관적 업데이트
-  // useEffect(() => {
-  //   const getTodoList = async () => {
-  //     try {
-  //       const res = await axiosInstance.get("/todo");
-  //       console.log(res);
-  //       setTodoList(res.data.data);
-  //     } catch (err) {
-  //       console.error(err);
-  //     }
-  //   };
-  //   getTodoList();
-  // }, []);
-
-  // 추가 함수
-  // async는 Promise를 리턴하므로 안에 리턴 써주지 않아도 됨
-  const addTodo = async (title, content) => {
-    try {
-      if (!title || !content) {
-        const err = new Error();
-        err.type = "empty content";
-        err.message = "빈칸을 채워주세요";
-        throw err;
-      }
-
-      await axiosInstance.post("/todo", {
-        title,
-        content,
-      });
-      getTodoList();
-      /*
-        데이터의 동기화 호출, 다른 사용자의 업데이트 호출, 안정성
-      */
-
-      // setTodoList([res.data.data, ...todoList]);
-      /*
-      - 낙관적 업데이트
-      데이터의 동기화나 일치보다 UX(사용자 경험 ) 개선이 중요할 때 사용
-      반드시 실패 했을 때는 에러 핸들링
-      */
-      setIsAddTodoModal(false);
-    } catch (err) {
-      throw err;
-    }
-  };
+  const [todoList, setTodoList, addTodo] = useAdd("/todo");
 
   const showTodoToastMessage = (e) => {
     e.preventDefault();
@@ -105,6 +24,7 @@ const TodoPage = () => {
         success: "TODO SUCCESS",
         error: "TODO ERROR",
       })
+      .then(() => setIsAddTodoModal(false))
       .catch((err) => {
         if (err.type === "empty content") alert(err.message);
       });

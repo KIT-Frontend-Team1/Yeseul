@@ -67,7 +67,7 @@ export const checkTodo = rest.patch("/api/todo/:id", async (req, res, ctx) => {
   );
 });
 
-export const deletetodo = rest.delete("/api/todo/:id", (req, res, ctx) => {
+export const deleteTodo = rest.delete("/api/todo/:id", (req, res, ctx) => {
   const { id } = req.params; // /api/todo/:id 여기 id 받아오는 방법임
   return res(
     ctx.status(200),
