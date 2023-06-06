@@ -209,6 +209,7 @@ export const deleteTodo = createAsyncThunk(
     console.log(id);
     const res = await axios.delete(`/api/todo/${id}`);
     console.log(res);
-    return res.data;
+    console.log(res.data);
+    return res.data; // action.payload
   }
 );

@@ -1,7 +1,19 @@
 import NavigationBtn from "../NavigationBtn";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { addCount, minusCount } from "../../reducer/cart";
 
 const Cart = () => {
+  const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+
+  const handleAddCount = () => {
+    dispatch(addCount(cart[0].id));
+  };
+
+  const handleMinusCount = () => {
+    dispatch(minusCount(cart[0].id));
+  };
   return (
     <S.Wrapper>
       <S.CartBox>
@@ -9,14 +21,14 @@ const Cart = () => {
         <S.TitleLine></S.TitleLine>
         <ul>
           <li style={{ fontSize: "18px" }}>
-            <span>Apple watch</span>
-            <span>50.00$</span>
+            <span>{cart[0].name}</span>
+            <span>{cart[0].price.toFixed(2)}$</span>
           </li>
           <li>
-            <span style={{ fontWeight: "bold" }}>x1</span>
+            <span style={{ fontWeight: "bold" }}>x{cart[0].count}</span>
             <div>
-              <button>+</button>
-              <button>-</button>
+              <button onClick={handleAddCount}>+</button>
+              <button onClick={handleMinusCount}>-</button>
             </div>
           </li>
         </ul>

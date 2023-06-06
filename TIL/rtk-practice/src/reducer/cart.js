@@ -1,17 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  items: [],
-};
+// const initialState = {
+//   items: [],
+// };
 
 export const cartSlice = createSlice({
   name: "carts",
-  initialState,
+  initialState: [{ id: 0, name: "Apple Watch", count: 1, price: 50 }],
   reducers: {
-    addItem(state, action) {
-      return state;
+    addCount(state, action) {
+      const index = state.findIndex((item) => item.id === action.payload);
+      state[index].count++;
+      state[index].price += 50;
+    },
+    minusCount(state, action) {
+      const index = state.findIndex((item) => item.id === action.payload);
+      if (state[index].count === 0) return state;
+      state[index].count--;
+      state[index].price -= 50;
     },
   },
 });
 
-export const { addItem } = cartSlice.actions;
+export const { addCount, minusCount } = cartSlice.actions;
