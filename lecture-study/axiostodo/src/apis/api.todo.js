@@ -34,6 +34,15 @@ const Apis = () => {
     }
   };
 
+  const updateTodoCheckApi = async (id, content, state) => {
+    try {
+      await axiosInstance.put(`/todo/${id}`, { content, state: !state });
+      getTodoApi();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   const updateTodoContentApi = async (id, content, state) => {
     try {
       await axiosInstance.put(`/todo/${id}`, { content, state });
@@ -55,6 +64,7 @@ const Apis = () => {
   const apis = {
     getTodoApi,
     addTodoApi,
+    updateTodoCheckApi,
     updateTodoContentApi,
     deleteTodoApi,
   };

@@ -45,6 +45,19 @@ const useCrud = () => {
     }
   };
 
+  // 체크 함수, setTodoList state를 true > false, false > true 로 바꿔주기
+  const handleCheckTodo = async (id, content, state) => {
+    try {
+      // await axiosInstance.put(`/todo/${id}`, { id, content, state: !state }); // 전달시에도 !state 해주어야 바뀐 state값이 db에 저장
+
+      // api call 관심사 분리
+      await apis.updateTodoCheckApi(id, content, state);
+      console.log(id, state);
+    } catch (err) {
+      console.err("Error!");
+    }
+  };
+
   // 수정 함수
   const handleUpdateTodo = async (id, content, state) => {
     try {
@@ -70,6 +83,7 @@ const useCrud = () => {
 
   return {
     addTodo,
+    handleCheckTodo,
     handleUpdateTodo,
     handleDeleteTodo,
   };

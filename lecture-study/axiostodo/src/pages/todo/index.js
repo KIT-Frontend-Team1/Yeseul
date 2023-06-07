@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import BasicButton from "../../components/Button/Button";
@@ -8,7 +7,6 @@ import TodoList from "./components/List/todo-list";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import usePrevModal from "../../hooks/use-prevmodal";
-import useAdd from "hooks/crud/use-add";
 import useCrud from "hooks/use-crud";
 
 const TodoPage = () => {
