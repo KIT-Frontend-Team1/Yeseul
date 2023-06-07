@@ -8,13 +8,16 @@ import router1 from "./routes/routing";
 import { ThemeProvider } from "styled-components";
 import theme from "./styles/theme";
 import GlobalStyles from "./styles/global";
+import TodoProvider from "contexts/todo.context";
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyles />
-      <RouterProvider router={router1} />
-    </ThemeProvider>
+    <TodoProvider>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <RouterProvider router={router1} />
+      </ThemeProvider>
+    </TodoProvider>
     // <BrowserRouter>
     // {/* HTML5를 지원하는 브라우저의 URL의 변화를 감지 */}
     // <Routes>
