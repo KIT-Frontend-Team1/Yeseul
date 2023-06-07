@@ -13,12 +13,7 @@ import useInputs from "../../../../hooks/use-inputs";
  *
  */
 
-const OneTodo = ({
-  todo,
-  handleCheckTodo,
-  handleUpdateTodo,
-  handleDeleteTodo,
-}) => {
+const OneTodo = ({ todo, handleUpdateTodo, handleDeleteTodo }) => {
   const { id, state, title, content } = todo;
   const [isEditMode, setIsEditMode] = useState(false); // 수정
   const [editContent, onChangeEditContent] = useInput(content);
@@ -28,7 +23,7 @@ const OneTodo = ({
 
   const handleOnSetEditMode = () => {
     if (!isEditMode) return setIsEditMode(true);
-    handleUpdateTodo(id, editContent);
+    handleUpdateTodo(id, editContent, !state);
     setIsEditMode(false);
   };
 
@@ -38,7 +33,7 @@ const OneTodo = ({
         <S.StateBox state={state}>
           <FontAwesomeIcon
             icon={faCheck}
-            onClick={() => handleCheckTodo(id, state)}
+            onClick={() => handleUpdateTodo(id, content, state)}
           />
         </S.StateBox>
         <S.Title state={state}>

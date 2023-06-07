@@ -1,23 +1,16 @@
-import useUpdate from "hooks/crud/use-update";
+import { useTodoStore } from "contexts/todo.context";
 import OneTodo from "./one-todo";
-import useDelete from "hooks/crud/use-delete";
+import useCrud from "hooks/use-crud";
 
-const TodoList = ({ todoList, setTodoList }) => {
-  const [handleCheckTodo, handleUpdateTodo] = useUpdate(
-    "/todo",
-    todoList,
-    setTodoList
-  );
-
-  // 삭제 함수
-  const handleDeleteTodo = useDelete("/todo");
+const TodoList = () => {
+  const { todoList } = useTodoStore();
+  const { handleUpdateTodo, handleDeleteTodo } = useCrud();
 
   return (
     <>
       {todoList.map((todo) => (
         <OneTodo
           todo={todo}
-          handleCheckTodo={handleCheckTodo}
           handleUpdateTodo={handleUpdateTodo}
           handleDeleteTodo={handleDeleteTodo}
         />

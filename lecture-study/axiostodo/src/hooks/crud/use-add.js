@@ -1,6 +1,6 @@
 import { axiosInstance } from "utils/axios";
 import { useState, useEffect } from "react";
-import { addTodoApi, getTodoApi } from "./api.todo";
+import { addTodoApi, getTodoApi } from "../../apis/api.todo";
 
 const useAdd = (endpoint) => {
   const [todoList, setTodoList] = useState([]);

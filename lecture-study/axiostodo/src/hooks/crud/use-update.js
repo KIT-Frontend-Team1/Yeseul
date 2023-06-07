@@ -1,5 +1,5 @@
 import { axiosInstance } from "utils/axios";
-import { updateTodoCheckApi } from "./api.todo";
+import { updateTodoCheckApi } from "../../apis/api.todo";
 
 const useUpdate = (endpoint, todoList, setTodoList) => {
   // 체크 함수, setTodoList state를 true > false, false > true 로 바꿔주기

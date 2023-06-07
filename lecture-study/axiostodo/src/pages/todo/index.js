@@ -9,10 +9,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import usePrevModal from "../../hooks/use-prevmodal";
 import useAdd from "hooks/crud/use-add";
+import useCrud from "hooks/use-crud";
 
 const TodoPage = () => {
   const [isAddTodoMadal, setIsAddTodoModal, handleAdd] = usePrevModal(false);
-  const [todoList, setTodoList, addTodo] = useAdd("/todo");
+  const { addTodo } = useCrud();
 
   const showTodoToastMessage = (e) => {
     e.preventDefault();
@@ -45,7 +46,7 @@ const TodoPage = () => {
         <S.Container>
           <S.Title>List</S.Title>
           <S.Content>
-            <TodoList todoList={todoList} setTodoList={setTodoList} />
+            <TodoList />
           </S.Content>
           <S.ButtonBox>
             <BasicButton variant={"primary"} size={"full"} onClick={handleAdd}>

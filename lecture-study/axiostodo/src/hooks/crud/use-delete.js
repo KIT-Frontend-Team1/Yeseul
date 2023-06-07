@@ -1,5 +1,5 @@
 import { axiosInstance } from "utils/axios";
-import { deleteTodoApi } from "./api.todo";
+import { deleteTodoApi } from "../../apis/api.todo";
 
 const useDelete = (endpoint, todoList, setTodoList) => {
   const handleDeleteTodo = async (id) => {
