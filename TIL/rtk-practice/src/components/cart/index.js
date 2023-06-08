@@ -2,6 +2,7 @@ import NavigationBtn from "../NavigationBtn";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { addCount, minusCount } from "../../reducer/cart";
+import { box, flexCenter } from "../../styles/common";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
@@ -42,25 +43,11 @@ export default Cart;
 
 const Wrapper = styled.div`
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
+  ${flexCenter}
 `;
 
 const CartBox = styled.div`
-  margin-bottom: 80px;
-  background-color: #fff;
-  border-radius: 12px;
-  width: 320px;
-  height: auto;
-  padding: 40px;
-  box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.06);
-  transition: transform 0.3s ease;
-
-  :hover {
-    transform: translateY(-5px);
-  }
+  ${box}
 
   h1 {
     margin-bottom: 20px;
