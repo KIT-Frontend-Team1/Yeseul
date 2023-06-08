@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faBan, faPen } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import useInput from "../../../../hooks/use-input";
-import useInputs from "../../../../hooks/use-inputs";
+import useCrud from "hooks/use-crud";
 
 /**
  *
@@ -13,13 +13,11 @@ import useInputs from "../../../../hooks/use-inputs";
  *
  */
 
-const OneTodo = ({ todo, handleUpdateTodo, handleDeleteTodo }) => {
+const OneTodo = ({ todo }) => {
   const { id, state, title, content } = todo;
   const [isEditMode, setIsEditMode] = useState(false); // 수정
   const [editContent, onChangeEditContent] = useInput(content);
-
-  // useInputs로 써보기
-  // const [{title, content}, onChangeInput] = useInputs()
+  const { handleUpdateTodo, handleDeleteTodo } = useCrud();
 
   const handleOnSetEditMode = () => {
     if (!isEditMode) return setIsEditMode(true);
