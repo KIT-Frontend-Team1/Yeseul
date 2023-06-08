@@ -4,14 +4,13 @@ import useCrud from "hooks/use-crud";
 
 const TodoList = () => {
   const { todoList } = useTodoStore();
-  const { handleCheckTodo, handleUpdateTodo, handleDeleteTodo } = useCrud();
+  const { handleUpdateTodo, handleDeleteTodo } = useCrud();
 
   return (
     <>
       {todoList.map((todo) => (
         <OneTodo
           todo={todo}
-          handleCheckTodo={handleCheckTodo}
           handleUpdateTodo={handleUpdateTodo}
           handleDeleteTodo={handleDeleteTodo}
         />

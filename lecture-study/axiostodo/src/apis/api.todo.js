@@ -1,12 +1,12 @@
 import { useTodoStore } from "contexts/todo";
 import { axiosInstance } from "utils/axios";
 
-const Apis = () => {
+const Apis = (endpoint) => {
   const { setTodoList } = useTodoStore();
 
-  const getTodoApi = async () => {
+  const getApi = async () => {
     try {
-      const res = await axiosInstance.get("/todo");
+      const res = await axiosInstance.get(endpoint);
       console.log(res.data.data);
       // return res.data.data;
       setTodoList(res.data.data);
@@ -15,7 +15,7 @@ const Apis = () => {
     }
   };
 
-  const addTodoApi = async (title, content) => {
+  const addApi = async (title, content) => {
     try {
       if (!title || !content) {
         const err = new Error();
@@ -24,49 +24,39 @@ const Apis = () => {
         throw err;
       }
 
-      await axiosInstance.post("/todo", {
+      await axiosInstance.post(endpoint, {
         title,
         content,
       });
-      getTodoApi();
+      getApi();
     } catch (err) {
       console.error(err);
     }
   };
 
-  const updateTodoCheckApi = async (id, content, state) => {
+  const updateApi = async (id, content, state) => {
     try {
-      await axiosInstance.put(`/todo/${id}`, { content, state: !state });
-      getTodoApi();
+      await axiosInstance.put(`${endpoint}/${id}`, { content, state });
+      getApi();
     } catch (err) {
       console.error(err);
     }
   };
 
-  const updateTodoContentApi = async (id, content, state) => {
+  const deleteApi = async (id) => {
     try {
-      await axiosInstance.put(`/todo/${id}`, { content, state });
-      getTodoApi();
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  const deleteTodoApi = async (id) => {
-    try {
-      await axiosInstance.delete(`/todo/${id}`);
-      getTodoApi();
+      await axiosInstance.delete(`${endpoint}/${id}`);
+      getApi();
     } catch (err) {
       console.error(err);
     }
   };
 
   const apis = {
-    getTodoApi,
-    addTodoApi,
-    updateTodoCheckApi,
-    updateTodoContentApi,
-    deleteTodoApi,
+    getApi,
+    addApi,
+    updateApi,
+    deleteApi,
   };
 
   return apis;

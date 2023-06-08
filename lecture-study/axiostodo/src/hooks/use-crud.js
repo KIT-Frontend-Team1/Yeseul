@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { axiosInstance } from "utils/axios";
 
 const useCrud = () => {
-  const apis = Apis();
+  const apis = Apis("/todo");
 
   // 조회 함수
   const getTodoList = async () => {
@@ -12,7 +12,7 @@ const useCrud = () => {
       // setTodoList(res.data.data);
 
       // api call 관심사 분리
-      await apis.getTodoApi();
+      await apis.getApi();
     } catch (err) {
       console.error(err);
     }
@@ -39,32 +39,19 @@ const useCrud = () => {
       // });
 
       // api call 관심사 분리
-      await apis.addTodoApi(title, content);
+      await apis.addApi(title, content);
     } catch (err) {
       throw err;
     }
   };
 
-  // 체크 함수, setTodoList state를 true > false, false > true 로 바꿔주기
-  const handleCheckTodo = async (id, content, state) => {
-    try {
-      // await axiosInstance.put(`/todo/${id}`, { id, content, state: !state }); // 전달시에도 !state 해주어야 바뀐 state값이 db에 저장
-
-      // api call 관심사 분리
-      await apis.updateTodoCheckApi(id, content, state);
-      console.log(id, state);
-    } catch (err) {
-      console.err("Error!");
-    }
-  };
-
-  // 수정 함수
+  // 수정, 체크 함수
   const handleUpdateTodo = async (id, content, state) => {
     try {
       // await axiosInstance.put(`/todo/${id}`, { id, content, state });
 
       // api call 관심사 분리
-      await apis.updateTodoCheckApi(id, content, state);
+      await apis.updateApi(id, content, state);
     } catch (err) {
       console.error("Error!");
     }
@@ -75,7 +62,7 @@ const useCrud = () => {
       // await axiosInstance.delete(`/todo/${id}`, { id });
 
       // api call 관심사 분리
-      await apis.deleteTodoApi(id);
+      await apis.deleteApi(id);
     } catch (err) {
       console.log(err);
     }
@@ -83,7 +70,6 @@ const useCrud = () => {
 
   return {
     addTodo,
-    handleCheckTodo,
     handleUpdateTodo,
     handleDeleteTodo,
   };
