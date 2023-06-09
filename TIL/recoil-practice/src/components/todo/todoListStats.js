@@ -1,6 +1,7 @@
 import { useRecoilValue } from "recoil";
 import { todoListStateState } from "../../recoil/todo/selectors";
 
+// 완료 여부에 따른 개수와 퍼센트 필터링하여 보여주기
 const TodoListStats = () => {
   const { totalNum, totalCompletedNum, totalUnCompletedNum, percentCompleted } =
     useRecoilValue(todoListStateState);

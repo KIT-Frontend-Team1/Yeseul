@@ -7,9 +7,10 @@ import { useState } from "react";
 import { useSetRecoilState } from "recoil";
 import { todoListState } from "../../recoil/todo/atoms";
 
+// todo 아이템 생성
 const TodoItemCreator = () => {
   const [inputValue, setInputValue] = useState("");
-  const setTodoList = useSetRecoilState(todoListState); // useSetRecoilState: 쓰기 전용(setter return)
+  const setTodoList = useSetRecoilState(todoListState); // todoListState 업데이트 하기 위해 useSetRecoilState: 쓰기 전용(setter return)
 
   const addItem = () => {
     setTodoList((oldTodoList) => [
