@@ -15,13 +15,17 @@ export const todoSlice = createSlice({
   initialState,
   reducers: {
     getTodo(state, action) {
-      state.todos = action.payload;
+      return state.todos;
     },
     addTodo(state, action) {
-      return state;
+      state.todos.push(action.payload);
     },
     updateTodo(state, action) {
-      return state;
+      const index = state.todos.findIndex(
+        (todo) => todo.id === action.payload.id
+      );
+
+      state.todos[index].content = action.payload.content;
     },
     completeTodo(state, action) {
       const index = state.todos.findIndex(

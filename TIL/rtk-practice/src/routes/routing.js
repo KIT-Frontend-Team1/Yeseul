@@ -1,7 +1,7 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import Cart from "../components/cart";
 import Todo from "../components/todo";
-import Board from "../components/board";
+import List from "../components/list";
 
 const router = createBrowserRouter([
   {
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <Board />,
+        element: <List />,
       },
     ],
   },

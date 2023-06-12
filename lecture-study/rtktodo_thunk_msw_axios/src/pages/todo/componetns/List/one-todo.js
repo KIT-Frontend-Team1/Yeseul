@@ -36,11 +36,11 @@ const OneTodo = ({ todo }) => {
     setIsEditMode(false);
   };
 
-  const handleTodoEdit = (id) => {
+  const handleTodoEdit = () => {
     dispatch(checkTodo({ id, state: !state }));
   };
 
-  const handleTodoDelete = (id) => {
+  const handleTodoDelete = () => {
     dispatch(deleteTodo({ id }));
   };
 
@@ -48,10 +48,7 @@ const OneTodo = ({ todo }) => {
     <S.Wrapper state={state}>
       <S.Header>
         <S.StateBox state={state}>
-          <FontAwesomeIcon
-            icon={faCheck}
-            onClick={() => handleTodoEdit(id, state)}
-          />
+          <FontAwesomeIcon icon={faCheck} onClick={handleTodoEdit} />
         </S.StateBox>
         <S.Title state={state}>
           {title}
@@ -60,10 +57,7 @@ const OneTodo = ({ todo }) => {
               icon={faPen}
               onClick={() => handleTodoUpdate(id, editContent)}
             />
-            <FontAwesomeIcon
-              icon={faBan}
-              onClick={() => handleTodoDelete(id)}
-            />
+            <FontAwesomeIcon icon={faBan} onClick={handleTodoDelete} />
           </div>
         </S.Title>
       </S.Header>

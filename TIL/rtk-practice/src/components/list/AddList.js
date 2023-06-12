@@ -1,20 +1,20 @@
 import styled from "styled-components";
 import { spaceBetween } from "../../styles/common";
 import { useDispatch } from "react-redux";
-import { addTodo } from "../../reducer/todo";
 import { useState } from "react";
+import { addList } from "../../reducer/list";
 
 const AddList = () => {
   const dispatch = useDispatch();
   const [text, setText] = useState("");
 
-  const onAddTodo = () => {
+  const onAddList = () => {
     const newTodo = {
       id: Math.floor(Math.random() * 100000),
       content: text,
       state: false,
     };
-    dispatch(addTodo(newTodo));
+    dispatch(addList(newTodo));
     setText("");
   };
 
@@ -33,7 +33,7 @@ const AddList = () => {
           }}
         >
           <input type="text" value={text} onChange={onChangeText} />
-          <button type="submit" onClick={onAddTodo}>
+          <button type="submit" onClick={onAddList}>
             add
           </button>
         </form>
